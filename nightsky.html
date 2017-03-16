@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nightsky</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="./nightsky.css" type="text/css">
+    </head>
+
+    <body>
+        <div class="page-header">
+            <!-- The k in Nightsky is in the shape of a crescent moon-->
+            <h1>Nights<i class="fa fa-moon-o" aria-hidden="true"></i>y</h1>
+        </div>
+        <div class="container" id="welcome">
+			Select the type of event that you would like to see
+			<br/>
+            <br/>
+        </div>
+
+        <div class="container" id="dropdownMenu">
+        </div>
+        <br/>
+        <div class="container" id="listings">
+        </div>
+		
+		<select id = "drop">
+			<option value= "planets">Planets</option>
+			<option value= "solar">Solar Eclipse</option>
+			<option value= "lunar">Lunar Eclipse</option>
+		</select>
+
+        <script type="text/javascript" src="./nightsky.js"></script>
+    </body>
+</html>
