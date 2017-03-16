@@ -14,7 +14,7 @@
             <h1>Nights<i class="fa fa-moon-o" aria-hidden="true"></i>y</h1>
         </div>
         <div class="container" id="welcome">
-			Select the type of event that you would like to see
+			Select the type of event that you would like to see, and a month
 			<br/>
             <br/>
         </div>
@@ -25,11 +25,29 @@
         <div class="container" id="listings">
         </div>
 		
-		<select id = "drop">
+		<select class = "drop">
 			<option value= "planets">Planets</option>
 			<option value= "solar">Solar Eclipse</option>
 			<option value= "lunar">Lunar Eclipse</option>
 		</select>
+		
+		<select class = "drop">
+			<option value= "1">January</option>
+			<option value= "2">Febuary</option>
+			<option value= "3">March</option>
+			<option value= "4">April</option>
+			<option value= "5">May</option>
+			<option value= "6">June</option>
+			<option value= "7">July</option>
+			<option value= "8">August</option>
+			<option value= "9">September</option>
+			<option value= "10">October</option>
+			<option value= "11">November</option>
+			<option value= "12">December</option>
+		</select>
+		
+		<input class="btn btn-default btn-lg" type="button" value="Start" onclick="start()">
+
 
         <script type="text/javascript" src="./nightsky.js"></script>
     </body>
