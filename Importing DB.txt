@@ -1,0 +1,5 @@
+Make a new database locally (I called it nightsky).
+Then use the new database (use databaseName)
+Then do the following command: source [absolute path to the .sql file]
+
+The database should load in, you can check if it does if you have the lunareclipse, solareclipse, and planets tables in the database.
