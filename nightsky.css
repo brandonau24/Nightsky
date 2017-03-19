@@ -28,6 +28,9 @@ label{
 }
 
 .carousel-inner{
+    /*Set this div to the middle of the page
+    The image size will be at max 350x350 pixels
+    */
     margin-left: auto;
     margin-right: auto;
     width: 350px;
