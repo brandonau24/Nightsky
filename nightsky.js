@@ -47,6 +47,7 @@ function query(){
         data: jsonObj,
         dataType: "html",
         success: function(msg){
+            console.log(msg);
             listings.innerHTML = msg;
         },
         error: function(jgXHR, textStatus,errorThrown){

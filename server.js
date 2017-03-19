@@ -5,7 +5,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 app.use(express.static("./")); //Serve static files in current directory
+
 var usno = require("./USNOCaller");
+var db = require("./DatabaseManager");
 
 var SPACE_EVENTS = ["Planets", "Solar Eclipses", "Lunar Eclipses"];
 var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August",
@@ -36,16 +38,19 @@ app.post("/events", function(req, res){
     html += "</select><br>";
 
     html += "<input class=\"btn btn-default btn-lg\" type=\"button\" value=\"Find\" onclick=\"query()\"></div></div><br>"
-    html += '<div class="container" id="listings"></div>';
+    html += "<div class=\"container\" id=\"listings\"></div>";
 
     res.send(html);
 });
 
 app.post('/query', function(req, res){
-    var event = req.body.event;
-    var month = req.body.month;
-    console.log(event);
-    console.log(month);
+    var event = req.body.event.toLowerCase();
+    var month = parseInt(req.body.month);
+    var dbManager = new db();
+    dbManager.once("done", function(msg){
+        res.send(msg);
+    });
+    dbManager.query(event, month);
 });
 
 app.listen(8080, function(){
