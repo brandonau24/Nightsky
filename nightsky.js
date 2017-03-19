@@ -1,8 +1,6 @@
-var dropdownMenu = document.getElementById("dropdownMenu");
-var listings = document.getElementById("listings");
+var info = document.getElementById("info");
 
 function start(){
-    document.getElementById("welcome").innerHTML = "";
     if(navigator.geolocation){
         //Use geolocation to retrieve user's latitude and longitude coordinates
         navigator.geolocation.getCurrentPosition(function(position){
@@ -10,7 +8,7 @@ function start(){
         });
     }
     else{
-        dropdownMenu.innerHTML = "This browser does not support geolocation.";
+        info.innerHTML = "This browser does not support geolocation.";
     }
 }
 
@@ -26,10 +24,34 @@ function getEvents(lat, long){
         data: jsonObj,
         dataType: "html",
         success: function(msg){
-            dropdownMenu.innerHTML = msg;
+            info.innerHTML = msg;
         },
         error: function(jgXHR, textStatus,errorThrown){
             console.log("Cannot connect to server.");
         }
     });
+}
+
+function query(){
+    var month = document.getElementById("months").value;
+    var spaceEvent = document.getElementById("spaceEvents").value;
+    var listings = document.getElementById("listings");
+
+    var jsonObj = {
+        "month": month,
+        "event": spaceEvent
+    };
+    $.ajax({
+        type: "POST",
+        url: "./query",
+        data: jsonObj,
+        dataType: "html",
+        success: function(msg){
+            listings.innerHTML = msg;
+        },
+        error: function(jgXHR, textStatus,errorThrown){
+            console.log("Cannot connect to server.");
+        }
+    });
+
 }

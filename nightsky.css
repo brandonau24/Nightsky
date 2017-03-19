@@ -12,6 +12,17 @@ h1{
     letter-spacing: 2px;
 }
 
-.drop {
-	color: black;	
+label{
+    font-size: 22px;
+    font-weight: normal;
+}
+
+#spaceEvents{
+    font-size: inherit;
+    color: black;
+}
+
+#months{
+    font-size: inherit;
+    color: black;
 }
