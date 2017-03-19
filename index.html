@@ -4,6 +4,7 @@
         <title>Nightsky</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="./nightsky.css" type="text/css">
     </head>
@@ -14,13 +15,57 @@
             <h1>Nights<i class="fa fa-moon-o" aria-hidden="true"></i>y</h1>
         </div>
         <div class="container" id="info">
-            Welcome to Nightsky. This web application will show which upcoming space events
-            will be visible from your area.
-            <br/>
-            <br/>
-			<input class="btn btn-default btn-lg" type="button" onclick="start()" value="Start">
-		</div>
+            Welcome to Nightsky.&nbsp;&nbsp;
+            <input class="btn btn-default btn-lg" type="button" onclick="start()" value="Start">
+            <br><br>
+            <!--Start of Image Carousel-->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2500">
+                <!--Images transition with slide animation. Occurs every 2.5 seconds-->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <!--Image then caption below it-->
+                      <img class="center-block" src="Imgs/lunar_eclipse.png">
+                      <br><br><br><br>
+                      <div class="carousel-caption">Total Lunar Eclipse, 2004</div>
+                    </div>
 
+                    <div class="item">
+                      <img class="center-block" src="Imgs/solar_eclipse.png">
+                      <br><br><br><br>
+                      <div class="carousel-caption">Total Scolar Eclipse, 2011</div>
+                    </div>
+
+                    <div class="item">
+                      <img class="center-block" src="Imgs/Venus.png">
+                      <br><br><br><br>
+                      <div class="carousel-caption">Nasa Image of Venus</div>
+                    </div>
+
+                    <div class="item">
+                      <img class="center-block" src="Imgs/Saturn.png">
+                      <br><br><br><br>
+                      <div class="carousel-caption">Nasa Image of Saturn</div>
+                    </div>
+
+                    <div class="item">
+                      <img class="center-block" src="Imgs/Uranus.png">
+                      <br><br><br><br>
+                      <div class="carousel-caption">Nasa Image of Uranus</div>
+                    </div>
+                </div> <!--Carousel Inner-->
+                <br>
+                <ol class="carousel-indicators">
+                    <!--Little circles that indicate which image the carousel is on
+                        clickable
+                    -->
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+            </div> <!-- End of Image Carousel-->
+        </div>
 
         <script type="text/javascript" src="./nightsky.js"></script>
     </body>
