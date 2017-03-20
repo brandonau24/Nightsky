@@ -4,8 +4,8 @@ var EventEmitter = require("events").EventEmitter;
 
 var con = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "abcd",
+    user: "rycanavan",
+    password: "ace135BD24",
     database: "nightsky"
 });
 
@@ -25,7 +25,7 @@ function DatabaseManager(){
 utils.inherits(DatabaseManager, EventEmitter);
 
 DatabaseManager.prototype.query = function(tableName, month){
-    var sqlCommand = "select * from " + tableName + " where MONTH(date)=" + con.escape(month) + ";";
+    var sqlCommand = "select * from " + tableName.replace(/\s+/g, '') + " where MONTH(date)=" + con.escape(month) + ";";
     console.log(sqlCommand);
     var self = this;
     var table = "";
@@ -34,11 +34,39 @@ DatabaseManager.prototype.query = function(tableName, month){
             console.log("Cannot query database." + err.stack);
         }
         else{
-            table = "<table class=\"table-bordered\">"
+            table = "<center><table class=\"table-bordered\">"
                   + "<tr><th>Date</th><th>" + tableName + "</th>";
-            for(var i = 0; i < rows.length; i++){
-                console.log(rows[i]);
+            if(tableName == "solar eclipse" || tableName == "lunar eclipse"){
+                for(var i = 0; i < rows.length; i++){
+                    table += "<tr><th>";
+                    var date = rows[i].date;
+                    var dd = date.getDate();
+                    var mm = date.getMonth()+1;
+                    var yyyy = date.getFullYear();
+                    var day = mm+'/'+dd+'/'+yyyy;
+                    table += day;
+                    table += "</th><th>";
+                    table += rows[i].type;
+                    table += "</th></tr>"
+                    console.log(rows[i]);
+                }
             }
+            else{
+                for(var i = 0; i < rows.length; i++){
+                    table += "<tr><th>";
+                    var date = rows[i].date;
+                    var dd = date.getDate();
+                    var mm = date.getMonth()+1;
+                    var yyyy = date.getFullYear();
+                    var day = mm+'/'+dd+'/'+yyyy;
+                    table += day;
+                    table += "</th><th>";
+                    table += rows[i].planetName;
+                    table += "</th></tr>"
+                    console.log(rows[i]);
+                }
+            }
+            table += "</table></center>";
         }
         self.emit("done", table);
     });
