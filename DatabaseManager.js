@@ -4,8 +4,8 @@ var EventEmitter = require("events").EventEmitter;
 
 var con = mysql.createConnection({
     host: "localhost",
-    user: "rycanavan",
-    password: "ace135BD24",
+    user: "root",
+    password: "abcd",
     database: "nightsky"
 });
 
@@ -26,7 +26,7 @@ utils.inherits(DatabaseManager, EventEmitter);
 
 DatabaseManager.prototype.query = function(tableName, month){
     var sqlCommand = "select * from " + tableName.replace(/\s+/g, '') + " where MONTH(date)=" + con.escape(month) + ";";
-    console.log(sqlCommand);
+    //Trim the tableName string so there are no spaces
     var self = this;
     var table = "";
     con.query(sqlCommand, function(err, rows, fields){
@@ -34,36 +34,43 @@ DatabaseManager.prototype.query = function(tableName, month){
             console.log("Cannot query database." + err.stack);
         }
         else{
-            table = "<center><table class=\"table-bordered\">"
-                  + "<tr><th>Date</th><th>" + tableName + "</th>";
+
+            if(rows.length == 0){
+                //No events that fall within the given date
+                table = "There are no " + tableName + " events in this month.";
+                self.emit("done", table);
+            }
+
+            table = "<center><table class=\"table table-condensed\">"
+                  + "<tr><th>Date</th><th>" + tableName + "</th></tr>";
             if(tableName == "solar eclipse" || tableName == "lunar eclipse"){
                 for(var i = 0; i < rows.length; i++){
-                    table += "<tr><th>";
+                    table += "<tr><td>";
                     var date = rows[i].date;
                     var dd = date.getDate();
                     var mm = date.getMonth()+1;
                     var yyyy = date.getFullYear();
                     var day = mm+'/'+dd+'/'+yyyy;
                     table += day;
-                    table += "</th><th>";
+                    table += "</td><td>";
                     table += rows[i].type;
-                    table += "</th></tr>"
-                    console.log(rows[i]);
+                    table += "</td></tr>"
+                    //console.log(rows[i]);
                 }
             }
             else{
                 for(var i = 0; i < rows.length; i++){
-                    table += "<tr><th>";
+                    table += "<tr><td>";
                     var date = rows[i].date;
                     var dd = date.getDate();
                     var mm = date.getMonth()+1;
                     var yyyy = date.getFullYear();
                     var day = mm+'/'+dd+'/'+yyyy;
                     table += day;
-                    table += "</th><th>";
+                    table += "</td><td>";
                     table += rows[i].planetName;
-                    table += "</th></tr>"
-                    console.log(rows[i]);
+                    table += "</td></tr>"
+                    //console.log(rows[i]);
                 }
             }
             table += "</table></center>";

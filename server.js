@@ -9,7 +9,7 @@ app.use(express.static("./")); //Serve static files in current directory
 var usno = require("./USNOCaller");
 var db = require("./DatabaseManager");
 
-var SPACE_EVENTS = ["Planets", "Solar Eclipses", "Lunar Eclipses"];
+var SPACE_EVENTS = ["Planets", "Solar Eclipse", "Lunar Eclipse"];
 var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August",
                 "September", "October", "November", "December"];
 
