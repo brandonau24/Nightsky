@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 app.use(express.static("./")); //Serve static files in current directory
 
-var usno = require("./USNOCaller");
+//var usno = require("./USNOCaller");
 var db = require("./DatabaseManager");
 
 var SPACE_EVENTS = ["Planets", "Solar Eclipse", "Lunar Eclipse"];
@@ -14,6 +14,7 @@ var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "A
                 "September", "October", "November", "December"];
 
 app.post("/events", function(req, res){
+    //Creates dropdown menus based on events in SPACE_EVENTS array
     /*var lat = req.body.lat;
     var long = req.body.long
     //console.log(lat + ", " + long);
@@ -21,7 +22,7 @@ app.post("/events", function(req, res){
     api.getSolarEclipses();*/
     var html = 'Select a space event and a find all the ones occurring in the selected month. <br/><br/>';
     html += "<div class=\"container\">";
-    html += "<div class=\"col-sm-2\ col-sm-offset-5\">";
+    html += "<div class=\"col-sm-4\ col-sm-offset-4\">";
     html += "<label for=\"spaceEvents\">Space Events:</label>"
     html += "<select class=\"form-control input-lg\" id=\"spaceEvents\">";
     for (var i = 0; i < SPACE_EVENTS.length; i++){
@@ -44,6 +45,7 @@ app.post("/events", function(req, res){
 });
 
 app.post('/query', function(req, res){
+    //Populate the webpage based on information returned from database query
     var event = req.body.event.toLowerCase();
     var month = parseInt(req.body.month);
     var dbManager = new db();

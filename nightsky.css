@@ -5,10 +5,11 @@ body{
     color: white;
     font-size: 20px;
     font-family: Roboto, sans-serif;
-    text-align: center;
+    text-align: center; /*Align everything to the center*/
 }
 
 h1{
+    /*A bit of spacing between letters*/
     letter-spacing: 2px;
 }
 
@@ -35,4 +36,9 @@ label{
     margin-right: auto;
     width: 350px;
     height: 350px;
+}
+
+.btn{
+    font-weight: bold;
+    color: black;
 }
